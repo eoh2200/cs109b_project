@@ -1,15 +1,48 @@
-<!DOCTYPE html><html><head>
-    <meta charset="utf-8"/><title>Talk-Aid MVP</title>
-    <style>
-    body{font-family:sans-serif;text-align:center;margin-top:3rem}
-    #summary{font-size:1.3rem;margin:1rem}
-    .circle{width:70px;height:70px;border-radius:50%;display:inline-block;margin:0 2rem}
-    </style></head><body>
-    
-    <h2>Live Conversation Aid</h2>
-    <button id="startBtn">🎙️ Start mic</button>
-    <div id="summary">Waiting for conversation…</div>
-    <div><span id="colA" class="circle"></span><span id="colB" class="circle"></span></div>
-    
-    <script src="/static/client.js"></script>
-    </body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Talk-Aid MVP</title>
+<style>
+  :root {
+    --pane-w: 38vw;
+    --pane-h: 30vh;
+    --color-h: 10vh;
+  }
+  body      { margin:0; font-family:system-ui,sans-serif; display:flex; justify-content:center }
+  #grid     { display:grid;
+              grid-template-columns: var(--pane-w) var(--pane-w);
+              grid-template-rows: var(--pane-h) var(--color-h) auto;
+              gap:1rem; padding:2rem;
+              width:calc(2*var(--pane-w) + 3rem); }
+  video     { width:100%; height:100%; object-fit:cover; background:#ccc; }
+  .cbox     { display:flex; align-items:center; justify-content:center;
+              color:#fff; font-weight:600; font-size:1rem; }
+  #summary  { grid-column:1/3; background:#e5e5e5; display:flex; align-items:center;
+              justify-content:center; font-size:1.25rem; padding:1rem; }
+
+  #ctrls    { position:fixed; top:1rem; right:1rem; }
+</style>
+</head>
+<body>
+
+<div id="grid">
+  <!-- video row -->
+  <video id="vidLeft"  autoplay playsinline muted></video>
+  <video id="vidRight" autoplay playsinline muted></video>
+
+  <!-- colour row -->
+  <div id="colLeft"  class="cbox">User&nbsp;B&nbsp;Emotion</div>
+  <div id="colRight" class="cbox">User&nbsp;A&nbsp;Emotion</div>
+
+  <!-- summary row -->
+  <div id="summary">Waiting for conversation…</div>
+</div>
+
+<div id="ctrls">
+  <button id="startBtn">🎙️ Start&nbsp;Mic</button>
+</div>
+
+<script src="/static/client.js" type="module"></script>
+</body>
+</html>

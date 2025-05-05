@@ -1,0 +1,41 @@
+Sure! Here’s a clean and tidy version of your instructions:
+
+⸻
+
+🛠 How to Run the Project Locally
+
+1. 🔍 Find your local IP address
+
+Open your terminal and run:
+
+ifconfig
+
+Look for the IP address under your active network (e.g., inet 10.250.197.110).
+You’ll use this IP in the next steps.
+
+⸻
+
+2. 🚀 Start the server
+
+Replace 10.250.197.110 with your actual IP address, then run:
+
+PYTHONPATH="/Users/gon/Documents/Spring 2025/Data Science B/Project Pipeline" \
+uvicorn backend.server:app --host 0.0.0.0 --port 8000 \
+  --ssl-keyfile=10.250.197.110-key.pem \
+  --ssl-certfile=10.250.197.110.pem
+
+
+
+⸻
+
+3. 🌐 Open the app in your browser
+
+On two different devices in the same network, open:
+	•	https://10.250.197.110:8000/?user=A
+	•	https://10.250.197.110:8000/?user=B
+
+🔐 If prompted, accept the browser’s security warning (self-signed certificate).
+
+⸻
+
+Let me know if you want this in Spanish or inside a README.md file format too.
